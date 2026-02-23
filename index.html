@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>God Sim Online</title>
+    <style>
+        body { margin: 0; overflow: hidden; background: #000; font-family: sans-serif; }
+        #ui-layer { position: absolute; top: 10px; left: 10px; color: white; pointer-events: none; }
+        .stat { background: rgba(0,0,0,0.6); padding: 5px 10px; border-radius: 5px; margin-bottom: 5px; pointer-events: auto; }
+        #controls { position: absolute; bottom: 20px; left: 20px; display: grid; grid-template-columns: 50px 50px 50px; gap: 5px; pointer-events: auto; }
+        button { width: 50px; height: 50px; cursor: pointer; background: #00d4ff; border: none; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div id="ui-layer">
+        <div class="stat">👥 Pop: <span id="pop">10</span> | 🪨 Stone: <span id="stone">0</span></div>
+        <div class="stat">⚡ Faith: <span id="faith">100</span></div>
+        <div id="build-menu" class="stat">
+            <button onclick="setBuildMode('mine')" style="width:100px">Build Mine</button>
+            <button onclick="setBuildMode('mason')" style="width:100px">Build Mason</button>
+        </div>
+    </div>
+
+    <div id="controls">
+        <div></div><button onclick="moveCam(0, -1)">▲</button><div></div>
+        <button onclick="moveCam(-1, 0)">◀</button><button onclick="moveCam(0, 1)">▼</button><button onclick="moveCam(1, 0)">▶</button>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script type="importmap">
+        { "imports": { "three": "https://unpkg.com/three@0.156.1/build/three.module.js" } }
+    </script>
+    <script type="module" src="game.js"></script>
+</body>
+</html>
